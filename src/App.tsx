@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
+// Logo: copy D_E_C_final_logo.png into /public and reference as shown below
+const decLogo = '/D_E_C_final_logo.png'
 
 // ─── DATA ───────────────────────────────────────────────────────────────────
 
@@ -62,7 +64,7 @@ const SERVICES = [
   {
     icon: '⭐',
     title: 'Specialised Services',
-    desc: 'Custom and specialised mechanical work tailored to unique fleet requirements. Ask us what we can do.',
+    desc: 'Custom and specialised mechanical work tailored to unique fleet requirements — earthmoving machinery included.',
   },
 ]
 
@@ -115,8 +117,11 @@ function Navbar() {
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__inner">
         <a href="#hero" className="navbar__logo">
-          <span className="navbar__logo-dec">D.E.C</span>
-          <span className="navbar__logo-sub">Mechanical Solutions</span>
+          <img src={decLogo} alt="D.E.C Mechanical Solutions" className="navbar__logo-img" />
+          <span>
+            <span className="navbar__logo-dec">D.E.C</span>
+            <span className="navbar__logo-sub">Mechanical Solutions</span>
+          </span>
         </a>
 
         <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
@@ -127,7 +132,7 @@ function Navbar() {
           ))}
           <li>
             <a href="tel:0636732276" className="navbar__cta">
-              Call Now
+              📞 Call Now
             </a>
           </li>
         </ul>
@@ -164,29 +169,39 @@ function Hero() {
         ))}
       </div>
 
+      {/* Decorative SVG gear */}
+      <svg className="hero__gear-deco" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <path d="M100 15 L110 5 L120 15 L130 10 L135 22 L147 20 L148 33 L160 35 L157 48 L168 54 L161 65 L170 74 L160 81 L165 93 L154 97 L155 110 L143 110 L140 123 L128 119 L122 131 L111 124 L102 133 L93 124 L82 131 L76 119 L64 123 L61 110 L49 110 L50 97 L39 93 L44 81 L34 74 L43 65 L36 54 L47 48 L44 35 L56 33 L57 20 L69 22 L74 10 L84 15 L90 5 Z" stroke="currentColor" strokeWidth="3" fill="none"/>
+        <circle cx="100" cy="100" r="35" stroke="currentColor" strokeWidth="3" fill="none"/>
+      </svg>
+
       <div className="hero__content">
         <div className="hero__badge">
           <span className="hero__badge-dot" />
-          18+ Years Industry Experience
+          Trucks · Trailers · Earth Moving Machinery
         </div>
+
+        {/* Logo image, prominent in hero */}
+        <img src={decLogo} alt="D.E.C Mechanical Solutions" className="hero__logo-img" />
 
         <h1 className="hero__title">
           <span className="hero__title-main">D.E.C</span>
           <span className="hero__title-sub">Mechanical Solutions</span>
-          <span className="hero__title-tag">(Pty) Ltd</span>
+          <span className="hero__title-tag">(Pty) Ltd · Est. 18+ Years</span>
         </h1>
 
+        <div className="hero__divider" />
+
         <p className="hero__tagline">
-          Truck &amp; Trailer Specialists.<br />
-          Quick turnaround. Passionate service. 24/7 on call.
+          Quick turnaround · Passionate service · 24/7 on call
         </p>
 
         <div className="hero__actions">
           <a href="tel:0636732276" className="btn btn--primary">
             <span>📞</span> 063 673 2276
           </a>
-          <a href="#services" className="btn btn--outline">
-            Our Services
+          <a href="https://wa.me/27636732276" className="btn btn--outline" target="_blank" rel="noopener noreferrer">
+            <span>💬</span> WhatsApp Us
           </a>
         </div>
 
@@ -195,12 +210,10 @@ function Hero() {
             <strong>18+</strong>
             <span>Years Experience</span>
           </div>
-          <div className="hero__stat-divider" />
           <div className="hero__stat">
             <strong>All Makes</strong>
             <span>Trucks &amp; Trailers</span>
           </div>
-          <div className="hero__stat-divider" />
           <div className="hero__stat">
             <strong>24/7</strong>
             <span>Roadside Support</span>
@@ -228,7 +241,7 @@ function Services() {
             Full-Spectrum<br />Mechanical Services
           </h2>
           <p className={`section-desc ${inView ? 'animate-in' : ''}`} style={{ animationDelay: '0.2s' }}>
-            From a simple service interval to a full engine rebuild — if it rolls on wheels, we work on it.
+            From a simple service interval to a full engine rebuild — if it rolls on wheels or tracks, we work on it.
           </p>
         </div>
 
@@ -271,8 +284,8 @@ function About() {
             <h2 className="section-title">Built on Experience.<br />Driven by Passion.</h2>
             <p>
               D.E.C Mechanical Solutions has been in the trenches of the transport industry for more than
-              <strong> 18 years</strong>. We know trucks. We know trailers. And we know what it means when
-              your vehicle is off the road.
+              <strong> 18 years</strong>. We know trucks. We know trailers. We know earthmoving machinery.
+              And we know what it means when your vehicle is off the road.
             </p>
             <p>
               Our team prides itself on <strong>fast turnaround times</strong> — because downtime costs you money.
@@ -287,7 +300,7 @@ function About() {
             <div className="about__highlights">
               <div className="about__highlight">
                 <div className="about__highlight-icon">✓</div>
-                <span>All makes and models — trucks &amp; trailers</span>
+                <span>Trucks, trailers &amp; earth moving machinery</span>
               </div>
               <div className="about__highlight">
                 <div className="about__highlight-icon">✓</div>
@@ -338,10 +351,10 @@ function About() {
             </div>
             <div className="about__ticker">
               <div className="about__ticker-inner">
-                {['Engine Rebuilds', 'Clutch Kits', 'Suspension', 'Diagnostics', 'Wheel Alignment', '24/7 Assistance', 'All Makes', 'Fleet Services'].map((t, i) => (
+                {['Engine Rebuilds', 'Clutch Kits', 'Suspension', 'Diagnostics', 'Wheel Alignment', '24/7 Assistance', 'All Makes', 'Earthmoving'].map((t, i) => (
                   <span key={i}>{t} &nbsp;·&nbsp; </span>
                 ))}
-                {['Engine Rebuilds', 'Clutch Kits', 'Suspension', 'Diagnostics', 'Wheel Alignment', '24/7 Assistance', 'All Makes', 'Fleet Services'].map((t, i) => (
+                {['Engine Rebuilds', 'Clutch Kits', 'Suspension', 'Diagnostics', 'Wheel Alignment', '24/7 Assistance', 'All Makes', 'Earthmoving'].map((t, i) => (
                   <span key={`b${i}`}>{t} &nbsp;·&nbsp; </span>
                 ))}
               </div>
@@ -454,7 +467,7 @@ function Emergency() {
         <div className="emergency__inner">
           <div className="emergency__pulse" aria-hidden="true" />
           <div className="emergency__content">
-            <h2 className="emergency__title">Broken Down Right Now?</h2>
+            <h2 className="emergency__title">🚨 Broken Down Right Now?</h2>
             <p className="emergency__sub">We provide 24/7 roadside breakdown assistance — call us immediately.</p>
           </div>
           <a href="tel:0636732276" className="btn btn--white">
@@ -512,12 +525,15 @@ function Footer() {
       <div className="container">
         <div className="footer__inner">
           <div className="footer__brand">
-            <div className="footer__logo">
-              <span className="navbar__logo-dec">D.E.C</span>
-              <span className="navbar__logo-sub">Mechanical Solutions</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+              <img src={decLogo} alt="D.E.C Logo" className="footer__logo-img" />
+              <span>
+                <span className="navbar__logo-dec" style={{ display: 'block' }}>D.E.C</span>
+                <span className="navbar__logo-sub">Mechanical Solutions</span>
+              </span>
             </div>
             <p className="footer__tagline">
-              Truck &amp; Trailer Specialists<br />with a passion for service.
+              Truck, Trailer &amp; Earthmoving Machinery Specialists<br />with a passion for service.
             </p>
           </div>
 
@@ -533,6 +549,7 @@ function Footer() {
             <strong>Contact</strong>
             <a href="tel:0636732276">063 673 2276</a>
             <a href="mailto:Decmechanicalsolutions@gmail.com">Decmechanicalsolutions@gmail.com</a>
+            <a href="https://wa.me/27636732276" target="_blank" rel="noopener noreferrer">WhatsApp: 063 673 2276</a>
             <span>D.E.C Mechanical Solutions (Pty) Ltd</span>
           </div>
         </div>
